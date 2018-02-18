@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Handgun_shot.wav-df062866364ff4d8b34f9116a501c776.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/Handgun_shot.wav"
+source_md5="07456adda1439dd4a569e1332b8419cf"
+
+dest_files=[ "res://.import/Handgun_shot.wav-df062866364ff4d8b34f9116a501c776.sample" ]
+dest_md5="7bbfc0720299eacbaf456a6979b434d9"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

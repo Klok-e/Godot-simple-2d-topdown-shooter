@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+onready var area=$Area2D
+
+func overlaps_anything():
+	var a=area.get_overlapping_bodies()
+	if len(a)==0:
+		return false
+	return true"
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="SpawnPoint" type="Node2D" groups=[
+"SpawnPoints",
+]]
+
+script = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+scale = Vector2( 2, 2 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+

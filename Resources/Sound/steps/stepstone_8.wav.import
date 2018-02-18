@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stepstone_8.wav-566e3793ad1fbfc8985a77bd4d192b8b.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/steps/stepstone_8.wav"
+source_md5="732052131d07ac98dcf8ded6b203d6cc"
+
+dest_files=[ "res://.import/stepstone_8.wav-566e3793ad1fbfc8985a77bd4d192b8b.sample" ]
+dest_md5="4f05f0ff0a3da23a0a9690f2c3c71c31"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

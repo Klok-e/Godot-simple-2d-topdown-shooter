@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/anttisinstrumentals_tapyourfoot.wav-e079f73570c8c997f4ba4cb17d068a47.sample"
+
+[deps]
+
+source_file="res://Resources/Sound/anttisinstrumentals_tapyourfoot.wav"
+source_md5="4c2982ed0640256e321bb9f8785ff326"
+
+dest_files=[ "res://.import/anttisinstrumentals_tapyourfoot.wav-e079f73570c8c997f4ba4cb17d068a47.sample" ]
+dest_md5="526dca7dc9e22d2c322e9c3260c0a5b4"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

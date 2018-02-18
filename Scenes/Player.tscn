@@ -1,0 +1,132 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scenes/scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Frames/player/frame3.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Frames/player/frame1.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Frames/player/frame2.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sound/Handgun_shot.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/scripts/Steps.gd" type="Script" id=6]
+[ext_resource path="res://Resources/Sound/steps/stepstone_7.wav" type="AudioStream" id=7]
+[ext_resource path="res://Resources/Sound/steps/stepstone_3.wav" type="AudioStream" id=8]
+[ext_resource path="res://Resources/Sound/steps/stepstone_4.wav" type="AudioStream" id=9]
+[ext_resource path="res://Resources/Sound/steps/stepstone_8.wav" type="AudioStream" id=10]
+[ext_resource path="res://Resources/Sound/steps/stepstone_5.wav" type="AudioStream" id=11]
+[ext_resource path="res://Resources/Sound/steps/stepstone_6.wav" type="AudioStream" id=12]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 18.1395
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "run"
+length = 0.9
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ]
+}
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Players",
+]]
+
+z_index = 2
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+undead = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+scale = Vector2( 1.65385, 1.65385 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1.2, 1.2 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+editor_draw_screen = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/run = SubResource( 2 )
+blend_times = [  ]
+
+[node name="Handgun" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="StepsManager" type="Node2D" parent="." index="5"]
+
+script = ExtResource( 6 )
+sound1 = ExtResource( 7 )
+sound2 = ExtResource( 8 )
+sound3 = ExtResource( 9 )
+sound4 = ExtResource( 10 )
+sound5 = ExtResource( 11 )
+sound6 = ExtResource( 12 )
+
+[node name="Step_timer" type="Timer" parent="StepsManager" index="0"]
+
+process_mode = 1
+wait_time = 0.35
+one_shot = true
+autostart = false
+
+[node name="Shoot_timer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.6
+one_shot = false
+autostart = false
+
+

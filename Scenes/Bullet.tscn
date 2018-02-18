@@ -1,0 +1,158 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/scripts/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Frames/bullet/bullet.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/scripts/BulletArea.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=1]
+
+min_value = -360.0
+max_value = 360.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+
+flags = 4
+width = 2048
+curve = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+
+offsets = PoolRealArray( 0, 0.650888, 0.849112, 0.997041, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.234421, 0.234421, 0.234421, 1, 0.510386, 0.510386, 0.510386, 1, 1, 1, 1, 1, 0.433234, 0.433234, 0.433234, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+
+flags = 4
+gradient = SubResource( 3 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=5]
+
+render_priority = 0
+trail_divisor = 1
+trail_color_modifier = SubResource( 4 )
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 40.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 8.2
+initial_velocity_random = 0.0
+angular_velocity = 7.04853e-43
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 1.0
+angle_curve = SubResource( 2 )
+scale = 1.0
+scale_random = 0.0
+color = Color( 1, 0.960938, 0, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 3.92
+anim_speed_random = 0.05
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Emission Shape", "Flags" ]
+
+[sub_resource type="Animation" id=6]
+
+length = 0.9
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Bullet" type="Node2D" groups=[
+"Bullets",
+]]
+
+z_index = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Particles2D" type="Particles2D" parent="." index="0"]
+
+show_behind_parent = true
+rotation = 1.5708
+emitting = true
+amount = 20
+lifetime = 3.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.01
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 5 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/bullet = SubResource( 6 )
+blend_times = [  ]
+
+[node name="BulletArea" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea" index="0"]
+
+shape = SubResource( 7 )
+
+
